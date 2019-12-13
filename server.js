@@ -1,6 +1,6 @@
 const express = require('express');
 const helmet = require('helmet');
-//routers go here!!!  <<-----------------------------<
+const recipesRouter = require('./recipes/recipesRouter')
 const server = express();
 
 server.use(express.json());
@@ -18,7 +18,7 @@ function logger(req, res, next) {
 //----------Implement Custom Middleware----------//
 server.use(helmet());
 server.use(logger);
-// server.use('/api/ROUTERNAME', ROUTERNAMERouter);
+server.use('/api/recipes', recipesRouter);
 
 //----------Sanity Check----------//
 server.get('/', (req, res) => {
